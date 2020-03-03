@@ -21,6 +21,10 @@
 			<if test="wxid != null and wxid!=''">
 				wxid,
 			</if>
+			<if test="creattime != null and creattime!=''">
+				creattime,
+			</if>
+			
    		</trim>
    		<trim prefix="values (" suffix=")" suffixOverrides=",">
 	   		<if test="username != null and username!=''">
@@ -37,6 +41,9 @@
 			</if>
 			<if test="wxid != null and wxid!=''">
 				#{wxid},
+			</if>
+			<if test="creattime != null and creattime!=''">
+				#{creattime},
 			</if>
    		
    		</trim>
@@ -61,14 +68,17 @@
 			<if test="wxid != null and wxid!=''">
 				wxid=#{wxid},
 			</if>
-   		
+			<if test="creattime != null and creattime!=''">
+				creattime=#{creattime},
+			</if>
+   			
    		</set>
    			 where uid=#{uid}
    </update>
    
    <!-- 通过微信ID或者用户ID查询关联的信息 -->
    <select id="queryUserByWxIdOrUid" resultType="com.bwsk.entity.User">
-   		select uid,username,utelphone,uposition,upic,wxid from user
+   		select uid,username,utelphone,uposition,upic,wxid,creattime from user
    			<where>
 	       		 <if test="uid != null and uid != ''">
 		          and  uid = #{uid}
@@ -77,6 +87,7 @@
 		          and  wxid = #{wxid}
 		       	 </if>
    			 </where>  
-   </select>
+   			 order by creattime desc
+   </select> 
  
 </mapper>

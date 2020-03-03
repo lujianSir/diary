@@ -17,6 +17,8 @@ public class User {
     private String upic;//用户对应的图片
     
     private String wxid;//微信ID与用户绑定
+    
+    private String creattime;//创建的时间
    
 	public int getUid() {
 		return uid;
@@ -64,6 +66,14 @@ public class User {
 
 	public void setWxid(String wxid) {
 		this.wxid = wxid;
+	}
+
+	public String getCreattime() {
+		return creattime;
+	}
+
+	public void setCreattime(String creattime) {
+		this.creattime = creattime;
 	}
  
     

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bwsk.mapper.ProjectMapper">
+ 
+   <!--添加用户  -->
+   <insert id="insertProject" parameterType="com.bwsk.entity.Project">
+   		insert into project 
+   		<trim prefix="(" suffix=")" suffixOverrides=",">
+	   		<if test="pname != null and pname!=''">
+				pname,
+			</if>
+			<if test="pabbreviation != null and pabbreviation !=''">
+				pabbreviation,
+			</if>
+			<if test="pnumber != null and pnumber !=''">
+				pnumber,
+			</if>
+			<if test="paddress != null and paddress=''">
+				paddress,
+			</if>
+			<if test="pstatus != null and pstatus!=''">
+				pstatus,
+			</if>
+			<if test="cid != null and cid!=''">
+				cid,
+			</if>
+			<if test="ptype != null and ptype!=''">
+				ptype,
+			</if>
+			<if test="contractamount != null and contractamount!=''">
+				contractamount,
+			</if>
+			<if test="acceptedamount != null and acceptedamount!=''">
+				acceptedamount,
+			</if>
+			<if test="acceptedinvoice != null and acceptedinvoice!=''">
+				acceptedinvoice,
+			</if>
+			<if test="totalartificial != null and totalartificial!=''">
+				totalartificial,
+			</if>
+			<if test="approachDay != null and approachDay!=''">
+				approachDay,
+			</if>
+			<if test="completeDay != null and completeDay!=''">
+				completeDay,
+			</if>
+			<if test="paycondition != null and paycondition!=''">
+				paycondition,
+			</if>
+			<if test="fineremarks != null and fineremarks!=''">
+				fineremarks,
+			</if>
+			<if test="creattime != null and creattime!=''">
+				creattime,
+			</if>
+			<if test="uid != null and uid!=''">
+				uid,
+			</if>
+   		</trim>
+   		<trim prefix="values (" suffix=")" suffixOverrides=",">
+	   		<if test="pname != null and pname!=''">
+				#{pname},
+			</if>
+			<if test="pabbreviation != null and pabbreviation !=''">
+				#{pabbreviation},
+			</if>
+			<if test="pnumber != null and pnumber !=''">
+				#{pnumber},
+			</if>
+			<if test="paddress != null and paddress=''">
+				#{paddress},
+			</if>
+			<if test="pstatus != null and pstatus!=''">
+				#{pstatus},
+			</if>
+			<if test="cid != null and cid!=''">
+				#{cid},
+			</if>
+			<if test="ptype != null and ptype!=''">
+				#{ptype},
+			</if>
+			<if test="contractamount != null and contractamount!=''">
+				#{contractamount},
+			</if>
+			<if test="acceptedamount != null and acceptedamount!=''">
+				#{acceptedamount},
+			</if>
+			<if test="acceptedinvoice != null and acceptedinvoice!=''">
+				#{acceptedinvoice},
+			</if>
+			<if test="totalartificial != null and totalartificial!=''">
+				#{totalartificial},
+			</if>
+			<if test="approachDay != null and approachDay!=''">
+				#{approachDay},
+			</if>
+			<if test="completeDay != null and completeDay!=''">
+				#{completeDay},
+			</if>
+			<if test="paycondition != null and paycondition!=''">
+				#{paycondition},
+			</if>
+			<if test="fineremarks != null and fineremarks!=''">
+				#{fineremarks},
+			</if>
+			<if test="creattime != null and creattime!=''">
+				#{creattime},
+			</if>
+   			<if test="uid != null and uid!=''">
+				#{uid},
+			</if>
+   		</trim>
+   </insert>
+   
+   <!-- 修改用户 -->
+   <update id="updateUser"  parameterType="com.bwsk.entity.User">
+   		update user 
+   		<set>
+   			<if test="username != null and username!=''">
+				username=#{username},
+			</if>
+			<if test="utelphone != null and utelphone !=''">
+				utelphone=#{utelphone},
+			</if>
+			<if test="uposition != null and uposition !=''">
+				uposition=#{uposition},
+			</if>
+			<if test="upic != null and upic!=''">
+				upic=#{upic},
+			</if>
+			<if test="wxid != null and wxid!=''">
+				wxid=#{wxid},
+			</if>
+   		
+   		</set>
+   			 where uid=#{uid}
+   </update>
+   
+   <!-- 通过微信ID或者用户ID查询关联的信息 -->
+   <select id="queryUserByWxIdOrUid" resultType="com.bwsk.entity.User">
+   		select uid,username,utelphone,uposition,upic,wxid from user
+   			<where>
+	       		 <if test="uid != null and uid != ''">
+		          and  uid = #{uid}
+		       	 </if>
+		       	 <if test="wxid != null and wxid != ''">
+		          and  wxid = #{wxid}
+		       	 </if>
+   			 </where>  
+   </select>
+ 
+</mapper>

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.bwsk.entity.User;
 import com.bwsk.mapper.UserMapper;
 import com.bwsk.service.UserService;
+import com.bwsk.util.Utils;
 
 
 @Service
@@ -21,6 +22,8 @@ public class UserServiceImpl implements UserService{
 		if(user.getUid()>0) {//存在  修改
 			row=userMapper.updateUser(user);
 		}else {//不存在 添加
+			String currentTime=Utils.getCurrent();
+			user.setCreattime(currentTime);
 			row=userMapper.insertUser(user);
 		}
 		return row;

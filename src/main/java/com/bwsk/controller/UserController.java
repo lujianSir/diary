@@ -8,7 +8,7 @@ import com.bwsk.entity.User;
 import com.bwsk.service.UserService;
 import com.bwsk.util.Result;
 /**
- * 用户相关的控制器
+ * 用户相关的接口
  * @author lujian
  *
  */

@@ -17,7 +17,10 @@
 			</if>
 			<if test="uid != null and uid!=''">
 				uid,
-			</if>			
+			</if>	
+			<if test="creattime != null and creattime!=''">
+				creattime,
+			</if>		
    		</trim>
    		<trim prefix="values (" suffix=")" suffixOverrides=",">
 	   		<if test="cname != null and cname!=''">
@@ -31,7 +34,10 @@
 			</if>
 			<if test="uid != null and uid!=''">
 				#{uid},
-			</if>			
+			</if>	
+			<if test="creattime != null and creattime!=''">
+				#{creattime},
+			</if>		
    		</trim>
    </insert>
    
@@ -51,7 +57,9 @@
 			<if test="uid != null and uid!=''">
 				uid=#{uid},
 			</if>
-			
+			<if test="creattime != null and creattime!=''">
+				creattime=#{creattime},
+			</if>
    		</set>
    			 where cid=#{cid}
    </update>
@@ -64,6 +72,7 @@
 				a.cabbreviation,
 				a.weixin,
 				a.uid,
+				a.creattime,
 				b.username
 			FROM
 				company a
@@ -76,6 +85,7 @@
 		          and  a.cid = #{cid}
 		       	 </if>
    			 </where>  
+   			  order by a.creattime desc
    </select>
  
 </mapper>

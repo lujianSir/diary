@@ -42,7 +42,11 @@ public class Project {
 	private String paycondition;//付款条件
 	
 	private String fineremarks;//罚款备注
+	
+	private String creattime;//创建的时间
 
+	private int uid;//创建的人
+	
 	public int getPid() {
 		return pid;
 	}
@@ -178,6 +182,21 @@ public class Project {
 	public void setCid(int cid) {
 		this.cid = cid;
 	}
-		
-	
+
+	public String getCreattime() {
+		return creattime;
+	}
+
+	public void setCreattime(String creattime) {
+		this.creattime = creattime;
+	}
+
+	public int getUid() {
+		return uid;
+	}
+
+	public void setUid(int uid) {
+		this.uid = uid;
+	}
+				
  }

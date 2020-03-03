@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.bwsk.entity.Company;
 import com.bwsk.mapper.CompanyMapper;
 import com.bwsk.service.CompanyService;
+import com.bwsk.util.Utils;
 
 @Service
 public class CompanyServiceImpl implements CompanyService{
@@ -28,6 +29,8 @@ public class CompanyServiceImpl implements CompanyService{
 		if(company.getCid()>0) {//存在  修改
 			row=companyMapper.updateCompany(company);
 		}else {//不存在 添加
+			String currentTime=Utils.getCurrent();
+			company.setCreattime(currentTime);
 			row=companyMapper.insertCompany(company);
 		}
 		return row;

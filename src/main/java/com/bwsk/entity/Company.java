@@ -19,6 +19,8 @@ public class Company {
 	
 	private String username;//用户名称
 	
+	private String creattime;//创建的时间
+	
 	public int getCid() {
 		return cid;
 	}
@@ -65,6 +67,14 @@ public class Company {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getCreattime() {
+		return creattime;
+	}
+
+	public void setCreattime(String creattime) {
+		this.creattime = creattime;
 	}
 	
 	

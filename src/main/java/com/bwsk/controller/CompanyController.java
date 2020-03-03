@@ -7,12 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bwsk.entity.Company;
-import com.bwsk.entity.User;
 import com.bwsk.service.CompanyService;
-import com.bwsk.service.UserService;
 import com.bwsk.util.Result;
 /**
- * 用户相关的控制器
+ * 公司相关的接口
  * @author lujian
  *
  */

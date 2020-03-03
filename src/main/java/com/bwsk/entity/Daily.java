@@ -50,6 +50,8 @@ public class Daily {
 	private String dtime;//日报提交的时间
 	
 	private int pid;//项目ID
+	
+	private String creattime;//创建的时间
 
 	public int getDid() {
 		return did;
@@ -217,6 +219,14 @@ public class Daily {
 
 	public void setPid(int pid) {
 		this.pid = pid;
+	}
+
+	public String getCreattime() {
+		return creattime;
+	}
+
+	public void setCreattime(String creattime) {
+		this.creattime = creattime;
 	}
 
 	
