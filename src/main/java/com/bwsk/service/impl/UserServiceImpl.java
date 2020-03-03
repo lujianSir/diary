@@ -19,9 +19,9 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		int row=0;
 		if(user.getUid()>0) {//存在  修改
-			row=userMapper.update(user);
+			row=userMapper.updateUser(user);
 		}else {//不存在 添加
-			row=userMapper.insert(user);
+			row=userMapper.insertUser(user);
 		}
 		return row;
 	}

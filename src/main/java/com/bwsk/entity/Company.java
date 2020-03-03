@@ -17,6 +17,8 @@ public class Company {
 	
 	private int uid;//用户ID
 	
+	private String username;//用户名称
+	
 	public int getCid() {
 		return cid;
 	}
@@ -55,6 +57,14 @@ public class Company {
 
 	public void setWeixin(String weixin) {
 		this.weixin = weixin;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	
 	

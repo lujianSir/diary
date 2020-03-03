@@ -3,7 +3,7 @@
 <mapper namespace="com.bwsk.mapper.UserMapper">
  
    <!--添加用户  -->
-   <insert id="insert" parameterType="com.bwsk.entity.User">
+   <insert id="insertUser" parameterType="com.bwsk.entity.User">
    		insert into user 
    		<trim prefix="(" suffix=")" suffixOverrides=",">
 	   		<if test="username != null and username!=''">
@@ -43,7 +43,7 @@
    </insert>
    
    <!-- 修改用户 -->
-   <update id="update"  parameterType="com.bwsk.entity.User">
+   <update id="updateUser"  parameterType="com.bwsk.entity.User">
    		update user 
    		<set>
    			<if test="username != null and username!=''">
