@@ -14,4 +14,7 @@ public interface UserMapper {
 	//修改用户信息
 	public int update(User user);
 	
+	//通过微信ID或者用户ID查询关联的信息
+	public User queryUserByWxIdOrUid(User user);
+	
 }

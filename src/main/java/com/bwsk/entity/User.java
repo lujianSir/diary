@@ -15,6 +15,8 @@ public class User {
     private String uposition;//职务
     
     private String upic;//用户对应的图片
+    
+    private String wxid;//微信ID与用户绑定
    
 	public int getUid() {
 		return uid;
@@ -54,6 +56,14 @@ public class User {
 
 	public void setUpic(String upic) {
 		this.upic = upic;
+	}
+
+	public String getWxid() {
+		return wxid;
+	}
+
+	public void setWxid(String wxid) {
+		this.wxid = wxid;
 	}
  
     

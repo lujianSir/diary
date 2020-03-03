@@ -25,6 +25,12 @@ public class UserServiceImpl implements UserService{
 		}
 		return row;
 	}
+
+	@Override
+	public User queryUserByWxIdOrUid(User user) {
+		// TODO Auto-generated method stub
+		return userMapper.queryUserByWxIdOrUid(user);
+	}
 	
 
 }

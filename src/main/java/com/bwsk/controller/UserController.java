@@ -34,4 +34,19 @@ public class UserController {
 			return Result.error(500, "服务端错误");
 		}	
 	}
+	
+	/**
+	 * 通过微信ID或者用户ID查询关联的信息
+	 * @param user
+	 * @return
+	 */
+	@RequestMapping("/queryUserByWxIdOrUid")
+	public Result<?> queryUserByWxIdOrUid(User user) {
+		User u=userService.queryUserByWxIdOrUid(user);
+		if(u!=null) {
+			return	Result.success(u);
+		}else {
+			return Result.error(500, "服务端错误");
+		}
+	}
 }
