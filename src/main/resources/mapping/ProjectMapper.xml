@@ -3,7 +3,7 @@
 <mapper namespace="com.bwsk.mapper.ProjectMapper">
  
    <!--添加用户  -->
-   <insert id="insertProject" parameterType="com.bwsk.entity.Project">
+   <insert id="insertProject" parameterType="com.bwsk.entity.Project" useGeneratedKeys="true" keyProperty="pid">
    		insert into project 
    		<trim prefix="(" suffix=")" suffixOverrides=",">
 	   		<if test="pname != null and pname!=''">
@@ -119,6 +119,11 @@
    		</trim>
    </insert>
    
+   <!-- 项目与用户绑定 -->
+   <insert id="insertProjectUser" parameterType="com.bwsk.entity.ProjectUser">
+   		insert into projectuser (pid,uid) values (#{pid},#{uid});
+   </insert>
+   
    <!-- 修改用户 -->
    <update id="updateProject"  parameterType="com.bwsk.entity.Project">
    		update project 
@@ -181,18 +186,63 @@
    		</set>
    			 where pid=#{pid}
    </update>
-   
-   <!-- 通过微信ID或者用户ID查询关联的信息 -->
-   <select id="queryUserByWxIdOrUid" resultType="com.bwsk.entity.User">
-   		select uid,username,utelphone,uposition,upic,wxid from user
-   			<where>
-	       		 <if test="uid != null and uid != ''">
-		          and  uid = #{uid}
-		       	 </if>
-		       	 <if test="wxid != null and wxid != ''">
-		          and  wxid = #{wxid}
-		       	 </if>
-   			 </where>  
-   </select>
- 
+   	
+   	<!-- 多种条件查询 -->
+   	<select id="queryProject" parameterType="com.bwsk.entity.Project" resultType="com.bwsk.entity.Project">
+   		SELECT
+			DISTINCT(b.pid),
+			b.pname,
+			b.pabbreviation,
+			b.pnumber,
+			b.paddress,
+			b.pstatus,
+			case when b.pstatus=1 then '进行中' when b.pstatus=2 then '未开工' else '已完工' end pstatusName,
+			b.cid,
+			d.cname pcompany,
+			b.ptype,
+			case when b.ptype=1 then '工程项目' when b.ptype=2 then '部门项目' else '个人项目' end ptypeName,
+			b.contractamount,
+			b.acceptedamount,
+			b.acceptedinvoice,
+			b.totalartificial,
+			b.approachDay,
+			b.completeDay,
+			b.paycondition,
+			b.fineremarks,
+			b.creattime,
+			b.uid,
+			b.weixin,
+			c.username,
+			c.upic
+		FROM
+			projectuser a
+		LEFT JOIN project b ON a.pid = b.pid
+		LEFT JOIN USER c ON b.uid = c.uid
+		LEFT JOIN company d on b.cid=d.cid
+		<where>
+       		 <if test="pid != null and pid != ''">
+	          and  b.pid = #{pid}
+	       	 </if>
+	       	 <if test="uid != null and uid != ''">
+	          and  a.uid = #{uid}
+	       	 </if>
+	       	 <if test="pstatus != null and pstatus != ''">
+	          and  b.pstatus = #{pstatus}
+	       	 </if>
+	       	  <if test="cid != null and cid != ''">
+	          and  b.cid = #{cid}
+	       	 </if>
+	       	  <if test="ptype != null and ptype != ''">
+	          and  b.ptype = #{ptype}
+	       	 </if>
+	       	 <if test="pcompany != null and pcompany != ''">
+	          and  d.cname like CONCAT('%',#{pcompany},'%')
+	       	 </if>
+	       	 <if test="pname != null and pname != ''">
+	          and  b.pname like CONCAT('%',#{pname},'%')
+	       	 </if>	       	 
+  		</where>
+  		 order by creattime desc  		
+   	</select>
+
 </mapper>

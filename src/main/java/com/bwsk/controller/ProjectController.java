@@ -1,6 +1,7 @@
 package com.bwsk.controller;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bwsk.entity.Project;
 import com.bwsk.entity.User;
 import com.bwsk.service.ProjectService;
-import com.bwsk.service.UserService;
 import com.bwsk.util.Result;
 /**
  * 用户相关的接口
@@ -30,24 +30,24 @@ public class ProjectController {
 	 */
 	@RequestMapping("/insertOrUpdateProject")
 	public Result<?> insertOrUpdateProject(Project project) {	
-		project.setPname("崇阳项目");
-		project.setPabbreviation("崇阳宁");
-		project.setPnumber("czcxzvz");
-		project.setPaddress("湖北崇阳");
-		project.setPstatus(1);
+		project.setPname("赤壁项目");
+		project.setPabbreviation("赤壁");
+		project.setPnumber("2132141");
+		project.setPaddress("湖北崇赤壁");
+		project.setPstatus(2);
 		project.setCid(5);
-		project.setPtype(1);
-		BigDecimal contractamount=new BigDecimal("450");
+		project.setPtype(3);
+		BigDecimal contractamount=new BigDecimal("920");
 		project.setContractamount(contractamount);
-		BigDecimal acceptedamount=new BigDecimal("240");
+		BigDecimal acceptedamount=new BigDecimal("740");
 		project.setAcceptedamount(acceptedamount);
-		BigDecimal acceptedinvoice=new BigDecimal("130");
+		BigDecimal acceptedinvoice=new BigDecimal("430");
 		project.setAcceptedinvoice(acceptedinvoice);
 		project.setTotalartificial(10);
 		project.setApproachDay("2010-3-3");
-		project.setCompleteDay("2018-8-3");
-		project.setPaycondition("非要全部成功");
-		project.setFineremarks("晚一天扣1000");
+		project.setCompleteDay("2019-18-3");
+		project.setPaycondition("非dsda要全部成功");
+		project.setFineremarks("晚3211扣1000");
 		project.setUid(3);
 		int row=projectService.insertOrUpdateProject(project);
 		if(row>0) {
@@ -57,4 +57,18 @@ public class ProjectController {
 		}	
 	}
 		
+	/**
+	 * 多种条件查询
+	 * @param project
+	 * @return
+	 */
+	@RequestMapping("/queryProject")
+	public Result<?> queryProject(Project project) {
+		List<Project> list=projectService.queryProject(project);
+		if(list!=null&&list.size()>0) {
+			return	Result.success(list);
+		}else {
+			return Result.error(500, "服务端错误");
+		}
+	}
 }

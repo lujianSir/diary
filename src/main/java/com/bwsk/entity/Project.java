@@ -21,11 +21,15 @@ public class Project {
 	
 	private int pstatus;//项目状态   1 进行  2 未开工  3.已完工
 	
+	private String pstatusName;//项目名称
+	
 	private String pcompany;//公司名称
 	
 	private int cid;//公司ID
 	
 	private int ptype;// 1 工程项目  2 部门项目  3个人项目
+	
+	private String ptypeName;//工程名称
 	
 	private BigDecimal contractamount;//合同金额
 	
@@ -207,6 +211,22 @@ public class Project {
 
 	public void setWeixin(String weixin) {
 		this.weixin = weixin;
+	}
+
+	public String getPstatusName() {
+		return pstatusName;
+	}
+
+	public void setPstatusName(String pstatusName) {
+		this.pstatusName = pstatusName;
+	}
+
+	public String getPtypeName() {
+		return ptypeName;
+	}
+
+	public void setPtypeName(String ptypeName) {
+		this.ptypeName = ptypeName;
 	}
 		
 	
