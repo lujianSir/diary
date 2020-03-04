@@ -15,7 +15,7 @@
 			<if test="pnumber != null and pnumber !=''">
 				pnumber,
 			</if>
-			<if test="paddress != null and paddress=''">
+			<if test="paddress != null and paddress!=''">
 				paddress,
 			</if>
 			<if test="pstatus != null and pstatus!=''">
@@ -57,6 +57,9 @@
 			<if test="uid != null and uid!=''">
 				uid,
 			</if>
+			<if test="weixin != null and weixin!=''">
+				weixin,
+			</if>
    		</trim>
    		<trim prefix="values (" suffix=")" suffixOverrides=",">
 	   		<if test="pname != null and pname!=''">
@@ -68,7 +71,7 @@
 			<if test="pnumber != null and pnumber !=''">
 				#{pnumber},
 			</if>
-			<if test="paddress != null and paddress=''">
+			<if test="paddress != null and paddress!=''">
 				#{paddress},
 			</if>
 			<if test="pstatus != null and pstatus!=''">
@@ -110,31 +113,73 @@
    			<if test="uid != null and uid!=''">
 				#{uid},
 			</if>
+			<if test="weixin != null and weixin!=''">
+				#{weixin},
+			</if>
    		</trim>
    </insert>
    
    <!-- 修改用户 -->
-   <update id="updateUser"  parameterType="com.bwsk.entity.User">
-   		update user 
+   <update id="updateProject"  parameterType="com.bwsk.entity.Project">
+   		update project 
    		<set>
-   			<if test="username != null and username!=''">
-				username=#{username},
+			<if test="pname != null and pname!=''">
+				pname=#{pname},
 			</if>
-			<if test="utelphone != null and utelphone !=''">
-				utelphone=#{utelphone},
+			<if test="pabbreviation != null and pabbreviation !=''">
+				pabbreviation=#{pabbreviation},
 			</if>
-			<if test="uposition != null and uposition !=''">
-				uposition=#{uposition},
+			<if test="pnumber != null and pnumber !=''">
+				pnumber=#{pnumber},
 			</if>
-			<if test="upic != null and upic!=''">
-				upic=#{upic},
+			<if test="paddress != null and paddress=''">
+				paddress=#{paddress},
 			</if>
-			<if test="wxid != null and wxid!=''">
-				wxid=#{wxid},
+			<if test="pstatus != null and pstatus!=''">
+				pstatus=#{pstatus},
+			</if>
+			<if test="cid != null and cid!=''">
+				cid=#{cid},
+			</if>
+			<if test="ptype != null and ptype!=''">
+				ptype=#{ptype},
+			</if>
+			<if test="contractamount != null and contractamount!=''">
+				contractamount=#{contractamount},
+			</if>
+			<if test="acceptedamount != null and acceptedamount!=''">
+				acceptedamount=#{acceptedamount},
+			</if>
+			<if test="acceptedinvoice != null and acceptedinvoice!=''">
+				acceptedinvoice=#{acceptedinvoice},
+			</if>
+			<if test="totalartificial != null and totalartificial!=''">
+				totalartificial=#{totalartificial},
+			</if>
+			<if test="approachDay != null and approachDay!=''">
+				approachDay=#{approachDay},
+			</if>
+			<if test="completeDay != null and completeDay!=''">
+				completeDay=#{completeDay},
+			</if>
+			<if test="paycondition != null and paycondition!=''">
+				paycondition=#{paycondition},
+			</if>
+			<if test="fineremarks != null and fineremarks!=''">
+				fineremarks=#{fineremarks},
+			</if>
+			<if test="creattime != null and creattime!=''">
+				creattime=#{creattime},
+			</if>
+   			<if test="uid != null and uid!=''">
+				uid=#{uid},
+			</if>
+			<if test="weixin != null and weixin!=''">
+				weixin=#{weixin},
 			</if>
    		
    		</set>
-   			 where uid=#{uid}
+   			 where pid=#{pid}
    </update>
    
    <!-- 通过微信ID或者用户ID查询关联的信息 -->

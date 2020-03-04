@@ -47,6 +47,8 @@ public class Project {
 
 	private int uid;//创建的人
 	
+	private String weixin;//项目绑定的微信ID
+	
 	public int getPid() {
 		return pid;
 	}
@@ -198,5 +200,14 @@ public class Project {
 	public void setUid(int uid) {
 		this.uid = uid;
 	}
-				
+
+	public String getWeixin() {
+		return weixin;
+	}
+
+	public void setWeixin(String weixin) {
+		this.weixin = weixin;
+	}
+		
+	
  }
